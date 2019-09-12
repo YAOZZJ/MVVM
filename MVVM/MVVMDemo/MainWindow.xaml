@@ -1,0 +1,39 @@
+﻿<Window x:Class="MVVMDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMDemo"
+        xmlns:view="clr-namespace:MVVMDemo.ViewModel"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="240" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Customer Name" Margin="0,0,50,10" Grid.Row="0" Grid.Column="0"></Label>
+        <Label Content="Sales Amount" Margin="0,0,50,10" Grid.Row="1" Grid.Column="0"></Label>
+        <Label Content="Buying Habits" Margin="0,0,50,10" Grid.Row="2" Grid.Column="0"></Label>
+        <Label Content="Married" Margin="0,0,50,10" Grid.Row="3" Grid.Column="0"></Label>
+        <Label Content="Age" Margin="0,0,50,10" Grid.Row="4" Grid.Column="0"></Label>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Name="txtName" Text="{Binding TxtCustomerName}"></TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TxtAmount}"></TextBlock>
+        <Rectangle Grid.Row="2" Grid.Column="1" Fill="{Binding LblAmountColor}"/>
+        <CheckBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding lblAge}"></TextBlock>
+
+        <Button Grid.Row="5" Grid.Column="0" Command="{Binding objCommand}"></Button>
+        <Button Grid.Row="5" Grid.Column="1"></Button>
+    </Grid>
+</Window>
