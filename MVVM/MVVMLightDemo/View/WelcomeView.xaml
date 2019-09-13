@@ -8,6 +8,8 @@
         Title="WelcomeView" 
         DataContext="{Binding Source={StaticResource Locator},Path=Welcome}"
         Height="300" Width="300">
+    <!-- 第9行在xaml中以StaticResource的形式获取ViewModelLocator实例的资源，Binding到DataContext -->
+
     <Grid>
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center">
