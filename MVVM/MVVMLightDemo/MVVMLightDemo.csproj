@@ -73,6 +73,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\UserInfoModel.cs" />
     <Compile Include="Model\WelcomeModel.cs" />
+    <Compile Include="ViewModel\DebugViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

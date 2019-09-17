@@ -4,16 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVMDemo"
-        xmlns:view="clr-namespace:MVVMDemo.ViewModel"
-        
+        xmlns:vms="clr-namespace:MVVMDemo.ViewModel"
+        d:DataContext="{d:DesignInstance vms:DebugViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="240" Width="400">
+        Title="MainWindow" SizeToContent="Height" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -33,7 +34,26 @@
         <CheckBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding lblAge}"></TextBlock>
 
-        <Button Grid.Row="5" Grid.Column="0" Command="{Binding objCommand}"></Button>
+        <Button Grid.Row="5" Grid.Column="0" Command="{Binding objCommand}" Height="40"></Button>
         <Button Grid.Row="5" Grid.Column="1"></Button>
+        <ListView ItemsSource="{Binding Path=Books}"
+          IsSynchronizedWithCurrentItem="True" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Title"
+                                DisplayMemberBinding="{Binding Books.Title}"/>
+                        <GridViewColumn Header="Author"
+                                DisplayMemberBinding="{Binding Books.Author}"/>
+                        <GridViewColumn Header="Publisher"
+                                DisplayMemberBinding="{Binding Books.Publisher}"/>
+                        <GridViewColumn Header="ISBN"
+                                DisplayMemberBinding="{Binding Books.ISBN}"/>
+                        <GridViewColumn Header="Price"
+                                DisplayMemberBinding="{Binding Books.Price}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

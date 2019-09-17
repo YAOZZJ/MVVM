@@ -59,6 +59,7 @@ namespace MVVMLightDemo.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();//注册MainViewModel
             SimpleIoc.Default.Register<WelcomeViewModel>();
             SimpleIoc.Default.Register<UserInfoViewModel>();
+            SimpleIoc.Default.Register<DebugViewModel>();
             //SimpleIoc作为默认的服务提供者,它是个简易的注入框架。
 
             //
@@ -107,7 +108,14 @@ namespace MVVMLightDemo.ViewModel
                 return ServiceLocator.Current.GetInstance<UserInfoViewModel>();
             }
         }
-        
+        public DebugViewModel Debug
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<DebugViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

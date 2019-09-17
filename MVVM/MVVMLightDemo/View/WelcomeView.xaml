@@ -7,13 +7,34 @@
         mc:Ignorable="d"
         Title="WelcomeView" 
         DataContext="{Binding Source={StaticResource Locator},Path=Welcome}"
-        Height="300" Width="300">
+        SizeToContent="WidthAndHeight">
     <!-- 第9行在xaml中以StaticResource的形式获取ViewModelLocator实例的资源，Binding到DataContext -->
 
     <Grid>
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center">
             <TextBlock Text="{Binding Welcome.Instroduction}" FontSize="30" />
+            <ListView x:Name="ListView1" DataContext="{Binding Source={StaticResource Locator},Path=Debug}" ItemsSource="{Binding Books}"
+          IsSynchronizedWithCurrentItem="True">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Title"
+                                DisplayMemberBinding="{Binding Title}"/>
+                            <GridViewColumn Header="Author"
+                                DisplayMemberBinding="{Binding Author}"/>
+                            <GridViewColumn Header="Publisher"
+                                DisplayMemberBinding="{Binding Publisher}"/>
+                            <GridViewColumn Header="ISBN"
+                                DisplayMemberBinding="{Binding ISBN}"/>
+                            <GridViewColumn Header="Price"
+                                DisplayMemberBinding="{Binding Price}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
+        <!--Command事件待深入
+        https://www.cnblogs.com/scy251147/p/3791954.html-->
     </Grid>
 </Window>
