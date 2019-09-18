@@ -4,14 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaliburnMicroDemo.Views"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:vms="clr-namespace:CaliburnMicroDemo.ViewModels"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="WelcomeView" SizeToContent="Height" Width="240">
+        Title="WelcomeView" SizeToContent="WidthAndHeight">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <!--*******************************************************
         属性关联
         一对一时：可直接关联给标签的名字
@@ -32,6 +38,31 @@
             <TextBox x:Name="TxtInstruction"></TextBox>
             <TextBlock Text="{Binding ElementName=TxtInstruction,Path=Text}"></TextBlock>
         </StackPanel>
-        
+        <StackPanel  Grid.Row="1" Grid.ColumnSpan="2">
+            <ListView x:Name="ListView1"
+                      ItemsSource="{Binding Books}"
+              IsSynchronizedWithCurrentItem="True">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Title"
+                                    DisplayMemberBinding="{Binding Title}"/>
+                            <GridViewColumn Header="Author"
+                                    DisplayMemberBinding="{Binding Author}"/>
+                            <GridViewColumn Header="Publisher"
+                                    DisplayMemberBinding="{Binding Publisher}"/>
+                            <GridViewColumn Header="ISBN"
+                                    DisplayMemberBinding="{Binding ISBN}"/>
+                            <GridViewColumn Header="Price"
+                                    DisplayMemberBinding="{Binding Price}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <local:DebugView DataContext="{Binding DebugViewModel}"
+                >
+                
+            </local:DebugView>
+        </StackPanel>
     </Grid>
 </Window>

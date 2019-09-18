@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVMLightDemo.View"
+        xmlns:ctrl="clr-namespace:MVVMLightDemo.Controls"
         mc:Ignorable="d"
         Title="WelcomeView" 
         DataContext="{Binding Source={StaticResource Locator},Path=Welcome}"
@@ -33,6 +34,9 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+            <ctrl:DebugView
+                DataContext="{Binding Source={StaticResource Locator},Path=Debug2}"
+                ></ctrl:DebugView>
         </StackPanel>
         <!--Command事件待深入
         https://www.cnblogs.com/scy251147/p/3791954.html-->
