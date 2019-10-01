@@ -1,17 +1,3 @@
-/*
-  In App.xaml:
-  <Application.Resources>
-      <vm:ViewModelLocator xmlns:vm="clr-namespace:MVVMLightDemo"
-                           x:Key="Locator" />
-  </Application.Resources>
-  
-  In the View:
-  DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
-
-  You can also use Blend to do all this with the tool's support.
-  See http://www.galasoft.ch/mvvm
-*/
-
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using CommonServiceLocator;
@@ -42,6 +28,31 @@ namespace MVVMLightDemo.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
+            //
+            //SimpleIoc:    一个非常简单的依赖注入容器。 Ioc（控制反转）
+            //SimpleIoc.Default：    SimpleIoc的默认实例
+
+            //使用方法：
+            //1.将自己的类注册到SimpleIoc
+            //  SimpleIoc.Default.Register(()=>new MyClass());
+            //
+            //2.把MainViewModel也注册到SimpleIoc
+            //  SimpleIoc.Default.Register<MainViewModel>();
+            //
+            //3.在Main属性中通过ServiceLocator.Current.GetInstance()方法获取实例
+            //  public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+            //
+            //4.在MainViewModel的构造函数中匹配MyClass类
+            //  public MainViewModel(MyClass data)
+            //  {
+            //      WelcomeTitle = data.Name;
+            //  }
+            //var nav = new NavigationService();
+            //nav.Configure(SecondPageKey, typeof(SecondPage));               //添加一个"键/页对"到导航服务中
+            //SimpleIoc.Default.Register<INavigationService>(() => nav);      //注册一个NavigationService实例（MainViewModel构造参数中匹配类型获取这个实例）
+
+            //SimpleIoc.Default.Register<IDialogService, DialogService>();    //注册DialogService实例（MainViewModel构造参数中匹配类型获取这个实例）
+
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);//设置用来检索当前实例的委托
             //为了统一化，并且在设计的时候可以看到看到ViewModel的数据，这边用ServiceLocator 又将SimpleIoc包裹了一层。
 
